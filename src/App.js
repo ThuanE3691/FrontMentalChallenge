@@ -1,10 +1,12 @@
 import "./App.css";
 import QRComponent from "./Challenge/QR_Code_Component/Components/QRComponent";
+import ResultsSummary from "./Challenge/Results_Summary/Components/ResultsSummary";
 
 function App() {
 	return (
 		<div className="App h-screen">
-			<QRComponent></QRComponent>
+			{/* <QRComponent></QRComponent> */}
+			<ResultsSummary></ResultsSummary>
 		</div>
 	);
 }
