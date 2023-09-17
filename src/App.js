@@ -1,12 +1,13 @@
 import "./App.css";
-import QRComponent from "./Challenge/QR_Code_Component/Components/QRComponent";
-import ResultsSummary from "./Challenge/Results_Summary/Components/ResultsSummary";
+import { BrowserRouter as Router } from "react-router-dom";
+import AppRouter from "./AppRouter";
 
 function App() {
 	return (
 		<div className="App h-screen">
-			{/* <QRComponent></QRComponent> */}
-			<ResultsSummary></ResultsSummary>
+			<Router>
+				<AppRouter></AppRouter>
+			</Router>
 		</div>
 	);
 }

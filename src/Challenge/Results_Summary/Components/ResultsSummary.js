@@ -17,7 +17,7 @@ const ResultsSummary = () => {
 						<br></br> these tests.
 					</p>
 				</div>
-				<div className=" w-[348px] px-8 pt-5 pb-6">
+				<div className=" w-[320px] px-8 pt-5 pb-6">
 					<h1 className="mb-6 font-extrabold text-xl">Summary</h1>
 					<div className="gap-y-2 md:mb-9 mb-4">
 						{data.map(({ category, score, icon }, index) => {
