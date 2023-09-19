@@ -1,17 +1,17 @@
 import Nav from "./Nav";
 import Article from "./Article";
 import Aside from "./Aside";
-import AnotherNews from "./AnotherNews";
+import ShortNewsLines from "./ShortNewsLine";
 
 const NewsHomePage = () => {
 	return (
-		<div className="w-full h-full py-14 px-32 font-inter bg-[#fffdfa]">
+		<div className="w-full h-full py-14 px-36 overflow-auto font-inter bg-[#fffdfa]">
 			<Nav></Nav>
-			<main className="flex items-start mb-16">
+			<main className=" grid grid-cols-7 grid-flow-col mb-16">
 				<Article></Article>
 				<Aside></Aside>
 			</main>
-			<AnotherNews></AnotherNews>
+			<ShortNewsLines></ShortNewsLines>
 		</div>
 	);
 };

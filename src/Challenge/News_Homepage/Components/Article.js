@@ -2,19 +2,14 @@ import articleImg from "../Assets/image-web-3-desktop.jpg";
 
 const Article = () => {
 	return (
-		<article className="mr-8">
-			<div
-				className="h-[300px] w-full bg-cover bg-no-repeat bg-center"
-				style={{
-					backgroundImage: `url(${articleImg})`,
-				}}
-			/>
-			<section className="flex mt-8 ">
-				<h2 className="text-6xl font-extrabold w-[350px] mr-auto">
+		<article className="col-span-5">
+			<img src={articleImg} className="h-[300px] w-[847px] object-fit" alt="" />
+			<section className=" mt-8 grid grid-cols-6 grid-flow-col">
+				<h2 className="text-[56px] leading-none font-extrabold col-span-2">
 					The Bright Future of Web 3.0?
 				</h2>
-				<div className="w-[38%] mr-5">
-					<p className="mb-8 text-[15px] text-[#5d5f79]">
+				<div className="col-span-3 col-start-4">
+					<p className="mb-10 text-[15px] text-[#5d5f79] pr-24">
 						We dive into the next evolution of the web that claims to put the
 						power of the platforms back into the hands of the people. But is it
 						really fulfilling its promise?
