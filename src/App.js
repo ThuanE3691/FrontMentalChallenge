@@ -4,7 +4,7 @@ import AppRouter from "./AppRouter";
 
 function App() {
 	return (
-		<div className="App h-screen">
+		<div className="h-screen App">
 			<Router>
 				<AppRouter></AppRouter>
 			</Router>

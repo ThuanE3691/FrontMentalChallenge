@@ -1,11 +1,11 @@
 import logo from "../Assets/logo.svg";
 import menu from "../Assets/icon-menu.svg";
 import menuClose from "../Assets/icon-menu-close.svg";
-
 import { useState } from "react";
 
 const Nav = () => {
 	const [showMenu, setShowMenu] = useState(false);
+
 	return (
 		<nav className="flex items-center text-[#5d5f79] mb-16">
 			<img src={logo} alt="logo" className="cursor-pointer mr-auto" />
