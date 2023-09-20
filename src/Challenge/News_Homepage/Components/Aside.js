@@ -28,7 +28,7 @@ const Aside = () => {
 		},
 	];
 	return (
-		<aside className="bg-[#00001a] text-white flex flex-col px-6 py-6 col-span-2">
+		<aside className="bg-[#00001a] text-white flex flex-col px-6 py-6">
 			<h1 className=" text-4xl font-bold mt-2 mb-6 text-[#e9ab53]">New</h1>
 			<ul>
 				{news.map(({ title, summary }, index) => {

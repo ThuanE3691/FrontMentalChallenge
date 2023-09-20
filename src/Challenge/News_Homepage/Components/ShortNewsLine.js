@@ -3,30 +3,21 @@ import gamingImg from "../Assets/image-gaming-growth.jpg";
 import lapImg from "../Assets/image-top-laptops.jpg";
 
 const ShortNews = ({ ordinal, title, content, news_img }) => {
-	// ISSUES
-	// WANT: IMAGE HAVE SIZE EQUAL WITH CONTENT
-	// BUG
-	// 1. IMAGE BIGGER THAN IMAGE
-	// TRY TO FIX: FLEX GROW, FLEX SHRINK
-	// RESULT: IMAGE NOT CHANGE, CONTENT FROM WRAP TO NO WRAP :<
-
-	// 2. TRY TO MAKE IMAGE SMALLER BY USE SIZE (WIDTH, HEIGHT)
-
-	// RESULT: NEAR TO THE WANT, BUT CONTENT ARE NOT HAVE LENGTH LIKE DESIGN
-	// AND ALL IMAGE NOT HAVE EQUAL SIZE BUT HAVE THE DIFFERENT SIZE
-
-	// IF YOU READ THIS, I AM VERY APPRECIATE THAT IF YOU CAN SOLVE MY QUESTION
 	return (
-		<li className="flex">
-			<img src={news_img} alt="news_img" className="mr-6" />
-
-			<div className="flex flex-col gap-y-2">
-				<p className="text-[#5d5f79] font-bold text-3xl">{ordinal}</p>
+		<li>
+			<article className="grid grid-cols-[1fr_2.2fr] grid-rows-[0.5fr_0.5fr_0.5fr] gap-x-6">
+				<img
+					src={news_img}
+					alt=""
+					className="row-span-3 object-cover w-full h-full"
+					loading="lazy"
+				/>
+				<p className="text-[#c5c6ce] font-bold text-3xl ">{ordinal}</p>
 				<p className="text-black font-bold text-[20px] cursor-pointer hover:text-[#f15e50] transition-colors duration-300">
 					{title}
 				</p>
 				<p className="text-[#5d5f79] text-[16px]">{content}</p>
-			</div>
+			</article>
 		</li>
 	);
 };
@@ -51,7 +42,7 @@ const ShortNewsLines = () => {
 	];
 	return (
 		<div>
-			<ul className="grid grid-flow-col grid-cols-3">
+			<ol className="grid md:grid-cols-3 md:gap-x-[55px] gap-y-10">
 				{short_news.map(({ title, content, news_img }, index) => {
 					return (
 						<ShortNews
@@ -63,7 +54,7 @@ const ShortNewsLines = () => {
 						></ShortNews>
 					);
 				})}
-			</ul>
+			</ol>
 		</div>
 	);
 };
