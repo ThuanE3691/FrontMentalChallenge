@@ -2,12 +2,16 @@ import QR_Screen from "../Assets/QR_Component.jpg";
 import Results_Screen from "../Assets/Results_Summary.jpg";
 import Notifications_Screen from "../Assets/Notifications_Page.jpg";
 import NewsHomePage_Screen from "../Assets/News_Homepage.jpg";
+import { AnimatePresence, motion } from "framer-motion";
 
 import { Link } from "react-router-dom";
 
 const ChallengeBox = ({ link_challenge, img_challenge, name_challenge }) => {
 	return (
-		<li className="px-4 pt-2 pb-6 transition-all duration-200 bg-white rounded-lg shadow-xl cursor-pointer w-fit hover:opacity-70">
+		<motion.li
+			className="px-4 pt-2 pb-6 transition-all duration-200 bg-white rounded-lg shadow-xl cursor-pointer w-fit hover:opacity-70"
+			whileHover={{ scale: 1.2 }}
+		>
 			<Link
 				to={`/${link_challenge}`}
 				className="grid grid-rows-[auto_256px] grid-cols-[minmax(0,256px)] gap-y-4"
@@ -16,10 +20,10 @@ const ChallengeBox = ({ link_challenge, img_challenge, name_challenge }) => {
 				<img
 					src={img_challenge}
 					alt=""
-					className="object-cover w-full h-full rounded-md border-[1px] border-gray-200"
+					className=" object-cover object-center w-full h-full rounded-md border-[1px] border-gray-200"
 				/>
 			</Link>
-		</li>
+		</motion.li>
 	);
 };
 
@@ -45,6 +49,7 @@ const Homepage = () => {
 			img_challenge: Notifications_Screen,
 			name_challenge: "Notifications Page",
 		},
+		{},
 	];
 
 	return (
@@ -53,15 +58,20 @@ const Homepage = () => {
 				Challenges
 			</p>
 			<ol className="grid text-xl lg:mt-8 lg:ml-12 lg:grid-cols-4 md:grid-cols-2 font-outfit gap-y-8 gap-x-4">
-				{challenges.map(({ link_challenge, img_challenge, name_challenge }) => {
-					return (
-						<ChallengeBox
-							link_challenge={link_challenge}
-							img_challenge={img_challenge}
-							name_challenge={name_challenge}
-						></ChallengeBox>
-					);
-				})}
+				<AnimatePresence>
+					{challenges.map(
+						({ link_challenge, img_challenge, name_challenge }) => {
+							return (
+								<ChallengeBox
+									link_challenge={link_challenge}
+									img_challenge={img_challenge}
+									name_challenge={name_challenge}
+									key={name_challenge}
+								></ChallengeBox>
+							);
+						}
+					)}
+				</AnimatePresence>
 			</ol>
 		</div>
 	);

@@ -5,6 +5,7 @@ import rizky_avatar from "./Assets/avatar-rizky-hasanuddin.webp";
 import kimberly_avatar from "./Assets/avatar-kimberly-smith.webp";
 import nathan_avatar from "./Assets/avatar-nathan-peterson.webp";
 import anna_avatar from "./Assets/avatar-anna-kim.webp";
+import chess_img from "./Assets/image-chess.webp";
 
 const list_notifications = [
 	{
@@ -57,6 +58,7 @@ const list_notifications = [
 		from_user: "Kimberly Smith",
 		user_avatar: kimberly_avatar,
 		user_action: "commented on your picture",
+		object_action: chess_img,
 		target_action: {
 			content: "",
 			type: null,

@@ -30,8 +30,8 @@ const NotificationsPage = () => {
 	}, [handleMakeAllRead]);
 
 	return (
-		<div className="flex justify-center w-full h-full overflow-auto bg-notification-bg">
-			<main className="py-8 my-16 bg-white rounded-lg shadow-2xl md:px-6 font-PlusJakarta h-fit">
+		<div className="w-full h-full overflow-auto bg-white md:justify-center md:flex md:bg-notification-bg">
+			<main className="px-4 py-6 bg-white rounded-lg shadow-2xl md:py-8 md:my-16 font-PlusJakarta h-fit">
 				<header className="flex items-center mb-6 ">
 					<p className="mr-3 text-xl font-bold">Notifications</p>
 					<div className=" bg-notification-blue text-white font-bold w-fit px-3 py-[1px] rounded mr-auto">
@@ -53,6 +53,7 @@ const NotificationsPage = () => {
 						read_state,
 						time_past,
 						private_message,
+						object_action,
 					}) => {
 						return (
 							<NotificationBox
@@ -60,6 +61,7 @@ const NotificationsPage = () => {
 								user_avatar={user_avatar}
 								user_action={user_action}
 								target_action={target_action}
+								object_action={object_action}
 								read_state={read_state}
 								time_past={time_past}
 								private_message={private_message}
