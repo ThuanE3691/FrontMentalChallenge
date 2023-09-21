@@ -31,7 +31,7 @@ const NotificationsPage = () => {
 
 	return (
 		<div className="flex justify-center w-full h-full overflow-auto bg-notification-bg">
-			<main className="px-6 py-8 my-16 bg-white rounded-lg shadow-2xl font-PlusJakarta h-fit">
+			<main className="py-8 my-16 bg-white rounded-lg shadow-2xl md:px-6 font-PlusJakarta h-fit">
 				<header className="flex items-center mb-6 ">
 					<p className="mr-3 text-xl font-bold">Notifications</p>
 					<div className=" bg-notification-blue text-white font-bold w-fit px-3 py-[1px] rounded mr-auto">
