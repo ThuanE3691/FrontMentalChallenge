@@ -5,7 +5,7 @@ import ResultsSummary from "./Challenge/Results_Summary/Components/ResultsSummar
 import NewsHomePage from "./Challenge/News_Homepage/Components/NewsHomePage";
 import NotificationsPage from "./Challenge/Notifications_Page/Components/NotificationsPage";
 import TimeDashBoard from "./Challenge/Time_Tracking_Dashboard/Components/TimeDashBoard";
-import AnimationPage from "./Components/AnimationPage";
+import CommentsPage from "./Challenge/Interactive_Comments_Section/Components/Comments_Page";
 
 const AppRouter = () => {
 	const location = useLocation();
@@ -13,50 +13,54 @@ const AppRouter = () => {
 		{
 			path: "/",
 			element: (
-				<AnimationPage>
-					<HomePage />
-				</AnimationPage>
+				// <AnimationPage>
+				<HomePage />
+				// </AnimationPage>
 			),
 		},
 		{
 			path: "/QR_Component",
 			element: (
-				<AnimationPage>
-					<QRComponent />
-				</AnimationPage>
+				//<AnimationPage>
+				<QRComponent />
+				//</AnimationPage>
 			),
 		},
 		{
 			path: "/Results_Summary",
 			element: (
-				<AnimationPage>
-					<ResultsSummary />
-				</AnimationPage>
+				//<AnimationPage>
+				<ResultsSummary />
+				//</AnimationPage>
 			),
 		},
 		{
 			path: "/News_Homepage",
 			element: (
-				<AnimationPage>
-					<NewsHomePage />
-				</AnimationPage>
+				//<AnimationPage>
+				<NewsHomePage />
+				//</AnimationPage>
 			),
 		},
 		{
 			path: "/Notifications_Page",
 			element: (
-				<AnimationPage>
-					<NotificationsPage />
-				</AnimationPage>
+				//<AnimationPage>
+				<NotificationsPage />
+				//</AnimationPage>
 			),
 		},
 		{
 			path: "/Time_Tracking_Dashboard",
 			element: (
-				<AnimationPage>
-					<TimeDashBoard />
-				</AnimationPage>
+				//<AnimationPage>
+				<TimeDashBoard />
+				//</AnimationPage>
 			),
+		},
+		{
+			path: "/Interactive_Comments_Section",
+			element: <CommentsPage />,
 		},
 	];
 	return (

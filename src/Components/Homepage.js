@@ -5,11 +5,12 @@ import NewsHomePage_Screen from "../Assets/News_Homepage.jpg";
 import TimeDashBoard_Screen from "../Assets/TimeDashBoard.jpg";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import Comments_Screen from "../Assets/Comments_Page.jpg";
 
 const ChallengeBox = ({ link_challenge, img_challenge, name_challenge }) => {
 	return (
 		<motion.li
-			className="px-4 pt-2 pb-6 transition-all duration-200 bg-white rounded-lg shadow-xl cursor-pointer w-fit hover:opacity-70"
+			className="px-4 pt-2 pb-6 transition-all duration-200 bg-white rounded-lg shadow-xl cursor-pointer w-fit hover:opacity-60"
 			whileHover={{ scale: 1.2 }}
 		>
 			<Link
@@ -53,6 +54,11 @@ const Homepage = () => {
 			link_challenge: "Time_Tracking_Dashboard",
 			img_challenge: TimeDashBoard_Screen,
 			name_challenge: "Time Tracking Dashboard",
+		},
+		{
+			link_challenge: "Interactive_Comments_Section",
+			img_challenge: Comments_Screen,
+			name_challenge: "Interactive Comments Section",
 		},
 	];
 
