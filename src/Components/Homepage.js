@@ -2,8 +2,8 @@ import QR_Screen from "../Assets/QR_Component.jpg";
 import Results_Screen from "../Assets/Results_Summary.jpg";
 import Notifications_Screen from "../Assets/Notifications_Page.jpg";
 import NewsHomePage_Screen from "../Assets/News_Homepage.jpg";
+import TimeDashBoard_Screen from "../Assets/TimeDashBoard.jpg";
 import { AnimatePresence, motion } from "framer-motion";
-
 import { Link } from "react-router-dom";
 
 const ChallengeBox = ({ link_challenge, img_challenge, name_challenge }) => {
@@ -49,11 +49,15 @@ const Homepage = () => {
 			img_challenge: Notifications_Screen,
 			name_challenge: "Notifications Page",
 		},
-		{},
+		{
+			link_challenge: "Time_Tracking_Dashboard",
+			img_challenge: TimeDashBoard_Screen,
+			name_challenge: "Time Tracking Dashboard",
+		},
 	];
 
 	return (
-		<div className="flex flex-col items-center justify-center w-full h-auto py-8 overflow-auto lg:h-full md:px-4 lg:block bg-notification-light-gray-blue-1">
+		<motion.div className="flex flex-col items-center justify-center w-full h-auto py-8 overflow-auto lg:h-full md:px-4 lg:block bg-notification-light-gray-blue-1">
 			<p className="mb-8 text-3xl font-semibold lg:ml-12 font-outfit">
 				Challenges
 			</p>
@@ -73,7 +77,7 @@ const Homepage = () => {
 					)}
 				</AnimatePresence>
 			</ol>
-		</div>
+		</motion.div>
 	);
 };
 

@@ -21,11 +21,11 @@ code {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;700;800&family=Inter:wght@400;700;800&family=Outfit:wght@400;700&family=Plus+Jakarta+Sans:wght@500;800&display=swap;');
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;700;800&family=Inter:wght@400;700;800&family=Outfit:wght@400;700&family=Plus+Jakarta+Sans:wght@500;800&family=Rubik:wght@300;400;500&display=swap;');
 
 
 @layer components{
   .flex__center{
-      @apply flex justify-center items-center;
+      @apply flex items-center justify-center;
   }
 }

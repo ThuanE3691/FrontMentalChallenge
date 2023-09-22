@@ -1,19 +1,69 @@
 import { Routes, Route, useLocation } from "react-router-dom";
+import HomePage from "./Components/Homepage";
 import QRComponent from "./Challenge/QR_Code_Component/Components/QRComponent";
 import ResultsSummary from "./Challenge/Results_Summary/Components/ResultsSummary";
 import NewsHomePage from "./Challenge/News_Homepage/Components/NewsHomePage";
 import NotificationsPage from "./Challenge/Notifications_Page/Components/NotificationsPage";
-import HomePage from "./Components/Homepage";
+import TimeDashBoard from "./Challenge/Time_Tracking_Dashboard/Components/TimeDashBoard";
+import AnimationPage from "./Components/AnimationPage";
 
 const AppRouter = () => {
 	const location = useLocation();
+	const challenges = [
+		{
+			path: "/",
+			element: (
+				<AnimationPage>
+					<HomePage />
+				</AnimationPage>
+			),
+		},
+		{
+			path: "/QR_Component",
+			element: (
+				<AnimationPage>
+					<QRComponent />
+				</AnimationPage>
+			),
+		},
+		{
+			path: "/Results_Summary",
+			element: (
+				<AnimationPage>
+					<ResultsSummary />
+				</AnimationPage>
+			),
+		},
+		{
+			path: "/News_Homepage",
+			element: (
+				<AnimationPage>
+					<NewsHomePage />
+				</AnimationPage>
+			),
+		},
+		{
+			path: "/Notifications_Page",
+			element: (
+				<AnimationPage>
+					<NotificationsPage />
+				</AnimationPage>
+			),
+		},
+		{
+			path: "/Time_Tracking_Dashboard",
+			element: (
+				<AnimationPage>
+					<TimeDashBoard />
+				</AnimationPage>
+			),
+		},
+	];
 	return (
 		<Routes location={location} key={location.path}>
-			<Route path="/" element={<HomePage />}></Route>
-			<Route path="/QR_Component" element={<QRComponent />}></Route>
-			<Route path="/Results_Summary" element={<ResultsSummary />}></Route>
-			<Route path="/News_Homepage" element={<NewsHomePage />}></Route>
-			<Route path="/Notifications_Page" element={<NotificationsPage />}></Route>
+			{challenges.map(({ path, element }) => {
+				return <Route path={path} element={element}></Route>;
+			})}
 		</Routes>
 	);
 };
