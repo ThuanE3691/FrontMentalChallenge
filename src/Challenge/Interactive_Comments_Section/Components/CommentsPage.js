@@ -1,5 +1,6 @@
 import CommentBox from "./CommentBox";
 import data from "../Data/data";
+import SendCommentBox from "./SendCommentBox";
 
 const RepliesArea = ({ replies, currentUser }) => {
 	return (
@@ -44,6 +45,7 @@ const Comments_Page = () => {
 						</>
 					);
 				})}
+				<SendCommentBox currentUser={data.currentUser}></SendCommentBox>
 			</main>
 		</div>
 	);
