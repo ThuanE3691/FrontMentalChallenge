@@ -4,28 +4,27 @@ import SendCommentBox from "./SendCommentBox";
 
 const RepliesArea = ({ replies, currentUser }) => {
 	return (
-		<div
-			className={`grid grid-cols-[auto_auto] gap-y-4 md:gap-x-10 gap-x-4 `}
-			style={{ gridTemplateRows: `repeat(${replies.length},auto)` }}
-		>
-			<div className=" w-[2.5px] md:h-[97%] h-full bg-comments-page-Light-gray rounded row-span-full md:ml-10"></div>
-			{replies.map((reply) => {
-				return (
-					<CommentBox
-						comment={reply}
-						key={reply.id + "-" + reply.user.username}
-						commentType="reply"
-						currentUser={currentUser}
-					></CommentBox>
-				);
-			})}
+		<div className="flex">
+			<div className=" md:w-[6px] w-[2px] md:h-[97%] h-full bg-comments-page-Light-gray rounded md:mx-10 mr-5"></div>
+			<div className="grid gap-y-4">
+				{replies.map((reply) => {
+					return (
+						<CommentBox
+							comment={reply}
+							key={reply.id + "-" + reply.user.username}
+							commentType="reply"
+							currentUser={currentUser}
+						></CommentBox>
+					);
+				})}
+			</div>
 		</div>
 	);
 };
 
-const Comments_Page = () => {
+const CommentsPage = () => {
 	return (
-		<div className="flex justify-center w-full h-auto overflow-auto font-Rubik md:h-full bg-comments-page-Very-light-gray md:px-[calc(50%-364px)]">
+		<div className="flex justify-center w-full h-auto overflow-auto font-Rubik min-w-min md:h-full bg-comments-page-Very-light-gray md:px-[calc(50%-364px)]">
 			<main className="grid mx-4 my-8 w-fit h-fit md:my-16 md:mx-0 gap-y-4">
 				{data.comments.map((comment) => {
 					return (
@@ -45,10 +44,13 @@ const Comments_Page = () => {
 						</>
 					);
 				})}
-				<SendCommentBox currentUser={data.currentUser}></SendCommentBox>
+				<SendCommentBox
+					currentUser={data.currentUser}
+					typeBox="SEND"
+				></SendCommentBox>
 			</main>
 		</div>
 	);
 };
 
-export default Comments_Page;
+export default CommentsPage;

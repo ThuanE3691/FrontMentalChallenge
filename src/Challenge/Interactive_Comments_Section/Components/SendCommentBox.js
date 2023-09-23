@@ -1,6 +1,8 @@
-const SendCommentBox = ({ currentUser }) => {
+const SendCommentBox = ({ currentUser, typeBox }) => {
 	return (
-		<div className="grid grid-cols-[max-content_auto_auto_max-content] md:grid-rows-[90px] gap-x-4 gap-y-4 bg-white w-full grid-rows-[auto-auto] px-6 py-5 rounded-xl">
+		<div
+			className={`grid grid-cols-[max-content_auto_auto_max-content] md:grid-rows-[90px] gap-x-4 gap-y-4 bg-white w-full grid-rows-[auto-auto] px-6 py-5 rounded-xl`}
+		>
 			<img
 				src={currentUser.image.png}
 				alt=""
@@ -12,7 +14,7 @@ const SendCommentBox = ({ currentUser }) => {
 				rows="4"
 			></textarea>
 			<button className="col-start-4 row-start-2 py-2 font-medium text-white rounded-lg md:place-self-start place-self-end md:row-start-1 px-7 bg-comments-page-Moderate-blue w-fit hover:bg-comments-page-Light-grayish-blue">
-				SEND
+				{typeBox}
 			</button>
 		</div>
 	);
