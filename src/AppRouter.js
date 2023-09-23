@@ -5,7 +5,7 @@ import ResultsSummary from "./Challenge/Results_Summary/Components/ResultsSummar
 import NewsHomePage from "./Challenge/News_Homepage/Components/NewsHomePage";
 import NotificationsPage from "./Challenge/Notifications_Page/Components/NotificationsPage";
 import TimeDashBoard from "./Challenge/Time_Tracking_Dashboard/Components/TimeDashBoard";
-import CommentsPage from "./Challenge/Interactive_Comments_Section/Components/Comments_Page";
+import CommentsPage from "./Challenge/Interactive_Comments_Section/Components/CommentsPage";
 
 const AppRouter = () => {
 	const location = useLocation();

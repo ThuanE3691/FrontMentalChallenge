@@ -1,7 +1,7 @@
 import CommentBox from "./CommentBox";
 import data from "../Data/data";
 
-const RepliesArea = ({ replies }) => {
+const RepliesArea = ({ replies, currentUser }) => {
 	return (
 		<div
 			className={`grid grid-cols-[auto_auto] gap-y-4 md:gap-x-10 gap-x-4 `}
@@ -14,6 +14,7 @@ const RepliesArea = ({ replies }) => {
 						comment={reply}
 						key={reply.id + "-" + reply.user.username}
 						commentType="reply"
+						currentUser={currentUser}
 					></CommentBox>
 				);
 			})}
@@ -23,7 +24,7 @@ const RepliesArea = ({ replies }) => {
 
 const Comments_Page = () => {
 	return (
-		<div className="flex justify-center w-full h-auto overflow-auto font-Rubik md:h-full bg-comments-page-Very-light-gray">
+		<div className="flex justify-center w-full h-auto overflow-auto font-Rubik md:h-full bg-comments-page-Very-light-gray md:px-[calc(50%-364px)]">
 			<main className="grid mx-4 my-8 w-fit h-fit md:my-16 md:mx-0 gap-y-4">
 				{data.comments.map((comment) => {
 					return (
@@ -32,9 +33,13 @@ const Comments_Page = () => {
 								comment={comment}
 								key={comment.id + "-" + comment.user.username}
 								commentType="comment"
+								currentUser={data.currentUser}
 							></CommentBox>
 							{comment.replies.length > 0 && (
-								<RepliesArea replies={comment.replies}></RepliesArea>
+								<RepliesArea
+									replies={comment.replies}
+									currentUser={data.currentUser}
+								></RepliesArea>
 							)}
 						</>
 					);
