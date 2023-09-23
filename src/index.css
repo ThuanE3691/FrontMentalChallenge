@@ -28,4 +28,8 @@ code {
   .flex__center{
       @apply flex items-center justify-center;
   }
+
+  .color__trans{
+    @apply transition-colors duration-200;
+  }
 }
