@@ -55,6 +55,41 @@ const data = {
 						},
 						username: "ramsesmiron",
 					},
+					replies: [
+						{
+							id: 123,
+							content:
+								"Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas",
+							createdAt: "1 month ago",
+							score: 12,
+							user: {
+								image: {
+									png: amyrobson,
+									webp: "image-amyrobson.webp",
+								},
+								username: "amyrobson",
+							},
+							replyingTo: "ramsesmiron",
+							replies: [
+								{
+									id: 1231,
+									content:
+										"Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas",
+									createdAt: "1 month ago",
+									score: 12,
+									user: {
+										image: {
+											png: amyrobson,
+											webp: "image-amyrobson.webp",
+										},
+										username: "amyrobson",
+									},
+									replyingTo: "ramsesmiron",
+									replies: [],
+								},
+							],
+						},
+					],
 				},
 				{
 					id: 4,
