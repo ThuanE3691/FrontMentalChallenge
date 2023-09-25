@@ -10,6 +10,7 @@ const CommentBox = ({
 	currentUser,
 	handleEventComment,
 	levelBox,
+	setShowDeleteModal
 }) => {
 	const [score, setScore] = useState(comment.score);
 	const [eventMode, setEventMode] = useState({
@@ -93,6 +94,7 @@ const CommentBox = ({
 						currentUser={currentUser}
 						handleEventMode={handleEventMode}
 						commentId={comment.id}
+						setShowDeleteModal={setShowDeleteModal}
 					></EventsArea>
 				</div>
 				<TextAreaRender

@@ -2,8 +2,9 @@ import CommentBox from "./CommentBox/CommentBox";
 import data from "../Data/data";
 import SendCommentBox from "./SendCommentBox";
 import { useState } from "react";
+import DeleteModal from "./DeleteModal";
 
-const RepliesArea = ({ replies, currentUser, handleEventComment, levelBox }) => {
+const RepliesArea = ({ replies, currentUser, handleEventComment, levelBox, setShowDeleteModal }) => {
 	return (
 		<div className={`flex ${levelBox !== 1 && "my-4"} `}>
 			<div
@@ -20,6 +21,7 @@ const RepliesArea = ({ replies, currentUser, handleEventComment, levelBox }) => 
 								currentUser={currentUser}
 								handleEventComment={handleEventComment}
 								levelBox={levelBox + 1}
+								setShowDeleteModal={setShowDeleteModal}
 							></CommentBox>
 
 							{reply.replies ? (
@@ -30,6 +32,7 @@ const RepliesArea = ({ replies, currentUser, handleEventComment, levelBox }) => 
 										handleEventComment={handleEventComment}
 										levelBox={levelBox + 1}
 										key={"replies-" + reply.id + (levelBox + 1)}
+										setShowDeleteModal={setShowDeleteModal}
 									></RepliesArea>
 								) : (
 									index !== replies.length - 1 && <div className="mt-4"></div>
@@ -48,6 +51,11 @@ const RepliesArea = ({ replies, currentUser, handleEventComment, levelBox }) => 
 const CommentsPage = () => {
 	const [comments, setComments] = useState([...data.comments]);
 
+	const [showDeleteModal, setShowDeleteModal] = useState({
+		show: false,
+		commentId: null,
+	})
+
 	const handleEventComment = ({
 		user,
 		content,
@@ -55,17 +63,6 @@ const CommentsPage = () => {
 		replyingTo,
 		commentId,
 	}) => {
-		// To be easy, id will be generated randomly by use Math random
-
-		// Content will be pass depend on what types of event mode in textarea
-
-		// Score: When init new comment, they all have the same score is 0
-
-		// User: We will use user pass to the function, they can be another user or this current user.
-
-		// Because data.json only have 1 current user so in this case this is current user, you can change the current in the data.json too
-
-		// Replies: Like the score, all the new comments will no have reply by anyone
 
 		const eventComment = {
 			eventType: eventType,
@@ -76,8 +73,10 @@ const CommentsPage = () => {
 				score: 0,
 				user: { ...user },
 				replies: [],
-			} : {
+			} : eventType !== "DELETE" ? {
 				content: content
+			} : {
+				
 			},
 		}
 
@@ -87,9 +86,22 @@ const CommentsPage = () => {
 				// First check if the comment id has the same
 
 				if (commentId === comments[i].id) {
-					if (eventComment.eventType === "REPLY") comments[i].replies = [...comments[i].replies, eventComment.objectEvent];
-					else if (eventComment.eventType === "EDIT") comments[i].content = eventComment.objectEvent.content;
-					return true;
+					switch (eventComment.eventType){
+						case 'REPLY':
+							comments[i].replies = [...comments[i].replies, eventComment.objectEvent]
+							return true
+						case 'EDIT':
+							comments[i].content = eventComment.objectEvent.content;
+							return true;
+						case 'DELETE':
+							comments = [...comments].filter((comment) => comment.id !== commentId)
+							return {
+								result: true,
+								comments: comments
+							}
+						default:
+							break;
+					}
 				} else if (comments[i].replies) {
 					// If not have, we will go into replies of that comment to find
 					result = find_and_add_comment(
@@ -97,13 +109,20 @@ const CommentsPage = () => {
 						commentId,
 						eventComment
 					);
-					if (result) return true;
+					if (eventComment.eventType !== 'DELETE') {
+						if (result) return true;
+					}
+					else if( result.result === true ) {
+						comments[i].replies = result.comments;
+						return {
+							result: true,
+							comments: comments
+						}
+					}
 				}
 			}
 			return result;
 		};
-
-		// Case 1: When we seed the comment with event mode is SEND
 
 		if (eventType === "SEND") setComments([...comments, eventComment.objectEvent]);
 		else {
@@ -116,7 +135,7 @@ const CommentsPage = () => {
 				}
 			});
 
-			if (result) {
+			if ((eventType === "DELETE" && result.result) || (eventType !== "DELETE" && result)) {
 				setComments(temp);
 			}
 		}
@@ -141,6 +160,7 @@ const CommentsPage = () => {
 									replies={comment.replies}
 									currentUser={data.currentUser}
 									handleEventComment={handleEventComment}
+									setShowDeleteModal={setShowDeleteModal}
 									levelBox={1}
 									key={"replies-" + comment.id + 1}
 								></RepliesArea>
@@ -155,6 +175,13 @@ const CommentsPage = () => {
 					levelBox={1}
 				></SendCommentBox>
 			</main>
+			{showDeleteModal.show && 
+				<DeleteModal 
+					showDeleteModal={showDeleteModal} 
+					setShowDeleteModal={setShowDeleteModal}
+					handleEventComment={handleEventComment}
+				></DeleteModal>
+			}
 		</div>
 	);
 };
