@@ -12,7 +12,7 @@ const JobListingPage = () => {
 			/>
 			<main className="grid mx-5 my-16 md:mx-32 md:gap-y-6 gap-y-10">
 				{data.map((job) => {
-					return <JobBox></JobBox>;
+					return <JobBox job={job} key={job.company}></JobBox>;
 				})}
 			</main>
 		</div>
