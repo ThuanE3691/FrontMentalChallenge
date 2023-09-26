@@ -9,6 +9,7 @@ module.exports = {
 				inter: ["Inter", "sans-serif"],
 				PlusJakarta: ["Plus Jakarta Sans", "sans-serif"],
 				Rubik: ["Rubik", "sans-serif"],
+				leagueSpartan: ["League Spartan", "sans-serif"],
 			},
 			colors: {
 				notification: {
