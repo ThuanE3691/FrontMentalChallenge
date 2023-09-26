@@ -1,10 +1,12 @@
+import { AnimatePresence, motion } from "framer-motion";
+import { Link } from "react-router-dom";
+
 import QR_Screen from "../Assets/QR_Component.jpg";
 import Results_Screen from "../Assets/Results_Summary.jpg";
 import Notifications_Screen from "../Assets/Notifications_Page.jpg";
 import NewsHomePage_Screen from "../Assets/News_Homepage.jpg";
 import TimeDashBoard_Screen from "../Assets/TimeDashBoard.jpg";
-import { AnimatePresence, motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import JobListing_Screen from "../Assets/Job_Listing.jpg";
 import Comments_Screen from "../Assets/Comments_Page.jpg";
 
 const ChallengeBox = ({ link_challenge, img_challenge, name_challenge }) => {
@@ -59,6 +61,11 @@ const Homepage = () => {
 			link_challenge: "Interactive_Comments_Section",
 			img_challenge: Comments_Screen,
 			name_challenge: "Interactive Comments Section",
+		},
+		{
+			link_challenge: "Job_Listing_Page_Master",
+			img_challenge: JobListing_Screen,
+			name_challenge: "Job Listings Page Master",
 		},
 	];
 

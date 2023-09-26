@@ -6,6 +6,7 @@ import NewsHomePage from "./Challenge/News_Homepage/Components/NewsHomePage";
 import NotificationsPage from "./Challenge/Notifications_Page/Components/NotificationsPage";
 import TimeDashBoard from "./Challenge/Time_Tracking_Dashboard/Components/TimeDashBoard";
 import CommentsPage from "./Challenge/Interactive_Comments_Section/Components/CommentsPage";
+import JobListingPage from "./Challenge/Job_Listing_Master/Components/JobListingPage";
 
 const AppRouter = () => {
 	const location = useLocation();
@@ -52,15 +53,15 @@ const AppRouter = () => {
 		},
 		{
 			path: "/Time_Tracking_Dashboard",
-			element: (
-				//<AnimationPage>
-				<TimeDashBoard />
-				//</AnimationPage>
-			),
+			element: <TimeDashBoard />,
 		},
 		{
 			path: "/Interactive_Comments_Section",
 			element: <CommentsPage />,
+		},
+		{
+			path: "/Job_Listing_Page_Master",
+			element: <JobListingPage />,
 		},
 	];
 	return (

@@ -4,7 +4,13 @@ import SendCommentBox from "./SendCommentBox";
 import { useState } from "react";
 import DeleteModal from "./DeleteModal";
 
-const RepliesArea = ({ replies, currentUser, handleEventComment, levelBox, setShowDeleteModal }) => {
+const RepliesArea = ({
+	replies,
+	currentUser,
+	handleEventComment,
+	levelBox,
+	setShowDeleteModal,
+}) => {
 	return (
 		<div className={`flex ${levelBox !== 1 && "my-4"} `}>
 			<div
@@ -54,7 +60,7 @@ const CommentsPage = () => {
 	const [showDeleteModal, setShowDeleteModal] = useState({
 		show: false,
 		commentId: null,
-	})
+	});
 
 	const handleEventComment = ({
 		user,
@@ -63,22 +69,24 @@ const CommentsPage = () => {
 		replyingTo,
 		commentId,
 	}) => {
-
 		const eventComment = {
 			eventType: eventType,
-			objectEvent: eventType !== "EDIT" ? {
-				id: Math.floor(Math.random() * 10000),
-				content: content,
-				createdAt: "2 minutes ago",
-				score: 0,
-				user: { ...user },
-				replies: [],
-			} : eventType !== "DELETE" ? {
-				content: content
-			} : {
-				
-			},
-		}
+			objectEvent:
+				eventType !== "EDIT"
+					? {
+							id: Math.floor(Math.random() * 10000),
+							content: content,
+							createdAt: "2 minutes ago",
+							score: 0,
+							user: { ...user },
+							replies: [],
+					  }
+					: eventType !== "DELETE"
+					? {
+							content: content,
+					  }
+					: {},
+		};
 
 		const find_and_add_comment = (comments, commentId, eventComment) => {
 			let result = false;
@@ -86,19 +94,24 @@ const CommentsPage = () => {
 				// First check if the comment id has the same
 
 				if (commentId === comments[i].id) {
-					switch (eventComment.eventType){
-						case 'REPLY':
-							comments[i].replies = [...comments[i].replies, eventComment.objectEvent]
-							return true
-						case 'EDIT':
+					switch (eventComment.eventType) {
+						case "REPLY":
+							comments[i].replies = [
+								...comments[i].replies,
+								eventComment.objectEvent,
+							];
+							return true;
+						case "EDIT":
 							comments[i].content = eventComment.objectEvent.content;
 							return true;
-						case 'DELETE':
-							comments = [...comments].filter((comment) => comment.id !== commentId)
+						case "DELETE":
+							comments = [...comments].filter(
+								(comment) => comment.id !== commentId
+							);
 							return {
 								result: true,
-								comments: comments
-							}
+								comments: comments,
+							};
 						default:
 							break;
 					}
@@ -109,33 +122,36 @@ const CommentsPage = () => {
 						commentId,
 						eventComment
 					);
-					if (eventComment.eventType !== 'DELETE') {
+					if (eventComment.eventType !== "DELETE") {
 						if (result) return true;
-					}
-					else if( result.result === true ) {
+					} else if (result.result === true) {
 						comments[i].replies = result.comments;
 						return {
 							result: true,
-							comments: comments
-						}
+							comments: comments,
+						};
 					}
 				}
 			}
 			return result;
 		};
 
-		if (eventType === "SEND") setComments([...comments, eventComment.objectEvent]);
+		if (eventType === "SEND")
+			setComments([...comments, eventComment.objectEvent]);
 		else {
 			let temp = [...comments];
 			const result = find_and_add_comment(temp, commentId, {
 				...eventComment,
 				objectEvent: {
 					...eventComment.objectEvent,
-					replyingTo: replyingTo
-				}
+					replyingTo: replyingTo,
+				},
 			});
 
-			if ((eventType === "DELETE" && result.result) || (eventType !== "DELETE" && result)) {
+			if (
+				(eventType === "DELETE" && result.result) ||
+				(eventType !== "DELETE" && result)
+			) {
 				setComments(temp);
 			}
 		}
@@ -175,13 +191,13 @@ const CommentsPage = () => {
 					levelBox={1}
 				></SendCommentBox>
 			</main>
-			{showDeleteModal.show && 
-				<DeleteModal 
-					showDeleteModal={showDeleteModal} 
+			{showDeleteModal.show && (
+				<DeleteModal
+					showDeleteModal={showDeleteModal}
 					setShowDeleteModal={setShowDeleteModal}
 					handleEventComment={handleEventComment}
 				></DeleteModal>
-			}
+			)}
 		</div>
 	);
 };

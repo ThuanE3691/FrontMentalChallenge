@@ -10,7 +10,7 @@ const CommentBox = ({
 	currentUser,
 	handleEventComment,
 	levelBox,
-	setShowDeleteModal
+	setShowDeleteModal,
 }) => {
 	const [score, setScore] = useState(comment.score);
 	const [eventMode, setEventMode] = useState({
@@ -68,9 +68,7 @@ const CommentBox = ({
 						commentScore={comment.score}
 					></ScoreBox>
 				</div>
-				<header
-					className={`flex items-center col-span-4`}
-				>
+				<header className={`flex items-center col-span-4`}>
 					<img src={comment.user.image.png} alt="" className="w-8 h-8 mr-4" />
 					<p className="font-medium">{comment.user.username}</p>
 					{currentUser.username === comment.user.username && (
