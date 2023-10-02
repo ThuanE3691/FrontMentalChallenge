@@ -9,7 +9,7 @@ import insure from "../Assets/insure.svg";
 import eyecam from "../Assets/eyecam-co.svg";
 import filterCompany from "../Assets/the-air-filter-company.svg";
 
-const FiltersArea = ({ filters }) => {
+const FiltersArea = ({ filters, addToQueryList }) => {
 	return (
 		<>
 			<ul className="flex flex-wrap items-center self-center w-full row-start-3 font-bold md:justify-end md:col-start-3 gap-y-4 md:gap-y-0 md:row-start-1 text-job-listing-desaturated-dark-cyan gap-x-4">
@@ -20,6 +20,7 @@ const FiltersArea = ({ filters }) => {
 						<li
 							className="px-2 py-1 rounded cursor-pointer bg-job-listing-light-grayish-cyan-filter-tablets w-fit hover:text-white hover:bg-job-listing-desaturated-dark-cyan color__trans"
 							key={tag}
+							onClick={(e) => addToQueryList(e)}
 						>
 							{tag}
 						</li>
@@ -48,7 +49,7 @@ const OthersInfosArea = ({ infos }) => {
 	);
 };
 
-const JobBox = ({ job }) => {
+const JobBox = ({ job, addToQueryList }) => {
 	const jobs_imgs = {
 		photosnap: photosnap,
 		manage: manage,
@@ -93,7 +94,10 @@ const JobBox = ({ job }) => {
 				</h1>
 				<OthersInfosArea infos={infos}></OthersInfosArea>
 			</div>
-			<FiltersArea filters={filters}></FiltersArea>
+			<FiltersArea
+				filters={filters}
+				addToQueryList={addToQueryList}
+			></FiltersArea>
 		</div>
 	);
 };
