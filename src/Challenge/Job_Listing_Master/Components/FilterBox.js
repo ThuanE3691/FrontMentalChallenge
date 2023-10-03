@@ -1,16 +1,16 @@
-import { LayoutGroup, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import remove_icon from "../Assets/icon-remove.svg";
 import { AnimatePresence } from "framer-motion";
 
 const FilterBox = ({ queries, clearQueryList, removeFromQueryList }) => {
 	return (
 		<motion.div
-			className="absolute flex items-center w-[83%] h-16 px-8 -translate-y-1/2 bg-white rounded-md shadow-2xl md:mx-32 "
+			className="absolute flex items-center md:w-[83.2%] w-[90%] md:h-16 min-h-[64px] px-8 top-[124px] bg-white rounded-md shadow-2xl md:mx-32 left-5 py-4 md:top-[134px] md:left-0"
 			initial={{ opacity: 0 }}
 			animate={{ opacity: 1 }}
 			exit={{ opacity: 0 }}
 		>
-			<ul className="flex items-center mr-auto gap-x-4">
+			<ul className="flex flex-wrap items-center mr-auto gap-x-4 gap-y-4">
 				<AnimatePresence mode="popLayout">
 					{queries.map((query) => {
 						return (

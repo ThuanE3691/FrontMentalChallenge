@@ -8,6 +8,7 @@ import shortly from "../Assets/shortly.svg";
 import insure from "../Assets/insure.svg";
 import eyecam from "../Assets/eyecam-co.svg";
 import filterCompany from "../Assets/the-air-filter-company.svg";
+import { motion } from "framer-motion";
 
 const FiltersArea = ({ filters, addToQueryList }) => {
 	return (
@@ -67,7 +68,12 @@ const JobBox = ({ job, addToQueryList }) => {
 	const infos = [job.postedAt, job.contract, job.location];
 
 	return (
-		<div className="grid w-full md:grid-cols-[auto_auto_1fr] grid-rows-[1.1rem_auto_1fr] md:grid-rows-none md:p-8 px-5 pb-6 gap-x-4 gap-y-4 md:gap-y-0 bg-white rounded-md shadow-xl border-l-job-listing-desaturated-dark-cyan border-l-[6px]">
+		<motion.div
+			className="grid w-full md:grid-cols-[auto_auto_1fr] grid-rows-[1.1rem_auto_1fr] md:grid-rows-none md:p-8 px-5 pb-6 gap-x-4 gap-y-4 md:gap-y-0 bg-white rounded-md shadow-xl border-l-job-listing-desaturated-dark-cyan border-l-[6px]"
+			initial={{ opacity: 0 }}
+			animate={{ opacity: 1 }}
+			exit={{ opacity: 0 }}
+		>
 			<img
 				src={jobs_imgs[job.company.toLowerCase()]}
 				alt=""
@@ -98,7 +104,7 @@ const JobBox = ({ job, addToQueryList }) => {
 				filters={filters}
 				addToQueryList={addToQueryList}
 			></FiltersArea>
-		</div>
+		</motion.div>
 	);
 };
 

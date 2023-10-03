@@ -1,9 +1,10 @@
 import bg_header from "../Assets/bg-header-desktop.svg";
+import bg_header_mobile from "../Assets/bg-header-mobile.svg";
 import JobBox from "./JobBox";
 import data from "../Data/data.json";
 import FilterBox from "./FilterBox";
 import { useState, useEffect } from "react";
-import { AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 const JobListingPage = () => {
 	const [queries, setQueries] = useState([]);
@@ -52,7 +53,13 @@ const JobListingPage = () => {
 			<img
 				src={bg_header}
 				alt=""
-				className="w-screen bg-job-listing-desaturated-dark-cyan"
+				className="hidden w-screen bg-job-listing-desaturated-dark-cyan md:block"
+				layout="true"
+			/>
+			<img
+				src={bg_header_mobile}
+				alt=""
+				className="block w-screen bg-job-listing-desaturated-dark-cyan md:hidden"
 				layout="true"
 			/>
 			<AnimatePresence>
@@ -66,20 +73,26 @@ const JobListingPage = () => {
 					></FilterBox>
 				)}
 			</AnimatePresence>
-			<main
-				className={`grid mx-5 md:mx-32 my-16 md:gap-y-6 gap-y-10`}
+			<motion.main
+				className={`grid mx-5 md:mx-32 my-16 md:gap-y-6 gap-y-10 md:translate-y-0 `}
 				key="job-display-area"
+				animate={{
+					translateY: queries.length > 0 ? "32px" : "0px",
+				}}
+				transition={{ duration: 0.3, ease: "easeInOut" }}
 			>
-				{jobDisplay.map((job) => {
-					return (
-						<JobBox
-							job={job}
-							key={job.company}
-							addToQueryList={addToQueryList}
-						></JobBox>
-					);
-				})}
-			</main>
+				<AnimatePresence>
+					{jobDisplay.map((job) => {
+						return (
+							<JobBox
+								job={job}
+								key={job.company}
+								addToQueryList={addToQueryList}
+							></JobBox>
+						);
+					})}
+				</AnimatePresence>
+			</motion.main>
 		</div>
 	);
 };
