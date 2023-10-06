@@ -10,16 +10,21 @@ import eyecam from "../Assets/eyecam-co.svg";
 import filterCompany from "../Assets/the-air-filter-company.svg";
 import { motion } from "framer-motion";
 
-const FiltersArea = ({ filters, addToQueryList }) => {
+const FiltersArea = ({ filters, addToQueryList, queries }) => {
 	return (
 		<>
 			<ul className="flex flex-wrap items-center self-center w-full row-start-3 font-bold md:justify-end md:col-start-3 gap-y-4 md:gap-y-0 md:row-start-1 text-job-listing-desaturated-dark-cyan gap-x-4">
 				<hr className="w-full h-[1px] row-start-3 bg-job-listing-dark-grayish-cyan md:hidden"></hr>
 
 				{filters.map((tag) => {
+					const isInQueries = queries.includes(tag);
 					return (
 						<li
-							className="px-2 py-1 rounded cursor-pointer bg-job-listing-light-grayish-cyan-filter-tablets w-fit hover:text-white hover:bg-job-listing-desaturated-dark-cyan color__trans"
+							className={`px-2 py-1 rounded cursor-pointer ${
+								isInQueries
+									? "bg-job-listing-desaturated-dark-cyan text-white hover:opacity-60"
+									: "bg-job-listing-light-grayish-cyan-filter-tablets w-fit hover:text-white hover:bg-job-listing-desaturated-dark-cyan"
+							} color__trans`}
 							key={tag}
 							onClick={(e) => addToQueryList(e)}
 						>
@@ -50,7 +55,7 @@ const OthersInfosArea = ({ infos }) => {
 	);
 };
 
-const JobBox = ({ job, addToQueryList }) => {
+const JobBox = ({ job, addToQueryList, queries }) => {
 	const jobs_imgs = {
 		photosnap: photosnap,
 		manage: manage,
@@ -103,6 +108,7 @@ const JobBox = ({ job, addToQueryList }) => {
 			<FiltersArea
 				filters={filters}
 				addToQueryList={addToQueryList}
+				queries={queries}
 			></FiltersArea>
 		</motion.div>
 	);

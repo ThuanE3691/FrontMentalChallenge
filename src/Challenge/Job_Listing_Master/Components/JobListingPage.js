@@ -13,6 +13,7 @@ const JobListingPage = () => {
 	const addToQueryList = (e) => {
 		if (!queries.find((q) => q === e.target.innerText))
 			setQueries([...queries, e.target.innerText]);
+		else setQueries([...queries].filter((q) => q !== e.target.innerText));
 	};
 
 	const removeFromQueryList = (query) => {
@@ -88,6 +89,7 @@ const JobListingPage = () => {
 								job={job}
 								key={job.company}
 								addToQueryList={addToQueryList}
+								queries={queries}
 							></JobBox>
 						);
 					})}
